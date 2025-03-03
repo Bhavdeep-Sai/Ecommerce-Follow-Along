@@ -147,3 +147,13 @@ In this milestone, we created a "My Products" page that displays all the product
 - **Backend**: Added an endpoint to fetch products by user email.
 - **Frontend**: Created a function to retrieve and display products dynamically.
 - **Component**: Utilized the `Card` component to present each product.
+
+Got it! Here’s a simplified version of the README file without code:
+
+---
+
+# Milestone 13: Edit Product Functionality
+
+## Learning Goals 🎯
+- Write an endpoint to update existing data in MongoDB.
+- Autofill forms with previous data for editing.

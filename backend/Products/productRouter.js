@@ -40,4 +40,32 @@ router.get("/", async (req, res) => {
     }
 });
 
+
+// Get a single product by ID
+router.get("/:id", async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+        res.status(200).json(product);
+    } catch (error) {
+        res.status(500).json({ message: "Server error", error: error.message });
+    }
+});
+
+
+router.put("/:id", async (req, res) => {
+    const { id } = req.params;
+    const updatedData = req.body;
+  
+    try {
+      const result = await Product.findByIdAndUpdate(id, updatedData, { new: true });
+      res.json(result);
+    } catch (error) {
+      res.status(500).json({ error: "Error updating product" });
+    }
+  });
+  
+
 module.exports = router;
