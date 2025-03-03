@@ -158,7 +158,7 @@ Got it! Here’s a simplified version of the README file without code:
 - Write an endpoint to update existing data in MongoDB.
 - Autofill forms with previous data for editing.
 
-# Milestone 13: Delete Product Functionality
+# Milestone 14: Delete Product Functionality
 
 ## Learning Goals 🎯
 - Write an endpoint to update existing data in MongoDB.
