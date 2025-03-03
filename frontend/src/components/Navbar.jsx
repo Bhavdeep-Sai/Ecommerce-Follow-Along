@@ -35,12 +35,12 @@ function Navbar() {
       <div className="space-x-4">
         {user ? (
           <>
-              <span className="text-lg font-medium">Hi❕ {user.name}</span>
+              <span className="text-lg font-medium">Welcome <span className='text-yellow-300'>{user.name}</span> !</span>
             <button
               onClick={() => navigate('/products')} // ✅ Show Product button after login
               className="bg-green-600 text-white px-5 py-2 rounded-lg shadow-md transition duration-300 hover:bg-green-700"
             >
-              Products
+              Add Products
             </button>
             <button
               onClick={handleLogout}
