@@ -163,3 +163,22 @@ Got it! Here’s a simplified version of the README file without code:
 ## Learning Goals 🎯
 - Write an endpoint to update existing data in MongoDB.
 - Deletes the product from the page
+
+Great, you're working on Milestone 15 of your follow-along project. Here’s a short README file tailored to your milestone:
+
+---
+
+# Milestone 15: Responsive navbar added
+
+### Description
+This milestone involves creating a responsive Navbar component with links to all pages in your application and ensuring smooth and easy navigation.
+
+### Learning Goals 🎯
+By the end of this milestone, you will:
+- Learn how to create a Nav component.
+- Understand how to reuse the same component across multiple pages.
+
+### Features
+- Links to Home, Add product, and Cart pages.
+- Responsive design for all screen sizes.
+- Reusable Navbar component.
