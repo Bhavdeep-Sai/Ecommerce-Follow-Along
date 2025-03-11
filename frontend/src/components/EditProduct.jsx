@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const EditProduct = () => {
-    const { id } = useParams();  // Get product ID from URL
+    const { id } = useParams(); // Get product ID from URL
     const navigate = useNavigate();
 
     const [product, setProduct] = useState({
@@ -14,15 +14,22 @@ const EditProduct = () => {
 
     // Fetch existing product details
     useEffect(() => {
-        axios.get(`http://localhost:8000/products/${id}`)
-            .then((response) => {
+        const fetchProduct = async () => {
+            try {
+                const token = localStorage.getItem("token"); // Get token from localStorage
+                const response = await axios.get(`http://localhost:8000/products/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Send token with request
+                    },
+                });
                 setProduct(response.data);
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error("Error fetching product:", error);
-            });
+            }
+        };
+
+        fetchProduct();
     }, [id]);
-    
 
     // Handle input changes
     const handleChange = (e) => {
@@ -33,9 +40,18 @@ const EditProduct = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:8000/products/${id}`, product);
+            const token = localStorage.getItem("token"); // Get token from localStorage
+            await axios.put(
+                `http://localhost:8000/products/${id}`,
+                product,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Send token with request
+                    },
+                }
+            );
             console.log("Product updated successfully!");
-            navigate("/");  // Redirect to product list
+            navigate("/"); // Redirect to product list
         } catch (error) {
             console.error("Error updating product:", error);
         }

@@ -1,9 +1,12 @@
-const Card = ({ name, price, image, onAddToCart, onBuyNow, onEdit, onDelete }) => {
+import { useNavigate } from "react-router-dom";
+
+const Card = ({ id, name, price, image, onAddToCart, onBuyNow, onEdit, onDelete }) => {
+  const navigate = useNavigate();
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl border border-gray-200 w-full max-w-sm">
+    <div className="bg-gray-800 rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl border border-gray-200 w-full max-w-sm">
       {/* Product Image */}
-      <div className="relative w-full h-64 flex justify-center items-center bg-gray-100">
-        <img src={image} alt={name} className="object-contain h-full w-full p-4" />
+      <div className="relative w-full h-64 flex justify-center items-center bg-gray-700">
+        <img src={image} alt={name}  onClick={() => navigate(`/product/${id}`)}  className="cursor-pointer object-contain h-full w-full p-4" />
         
         {/* Edit Button (Top Right) */}
         <button onClick={onEdit} className="absolute top-3 right-3 bg-gray-200 p-2 rounded-full hover:invert cursor-pointer transition-all">
@@ -15,18 +18,14 @@ const Card = ({ name, price, image, onAddToCart, onBuyNow, onEdit, onDelete }) =
 
       {/* Product Details */}
       <div className="text-center p-4">
-        <h3 className="text-lg font-semibold text-gray-900">{name}</h3>
-        <p className="text-lg text-green-600 font-bold mt-1">${price}</p>
+        <h3 className="font-semibold text-gray-100 text-3xl">{name}</h3>
+        <p className="text-2xl text-green-600 font-bold mt-1">${price}</p>
 
         {/* Action Buttons */}
         <div className="flex justify-center items-center gap-4 mt-4 pb-4">
           {/* Add to Cart */}
           <button onClick={onAddToCart} className="flex items-center justify-center">
-            <img
-              src="https://th.bing.com/th/id/OIP.KUbJUQENTwusA_vixyzjeQHaHa?rs=1&pid=ImgDetMain"
-              alt="Cart"
-              className="h-7 cursor-pointer hover:scale-110 transition-transform"
-            />
+          <img width="24" height="24" className="invert" src="https://img.icons8.com/material/24/shopping-cart--v1.png" alt="shopping-cart--v1"/>
           </button>
 
           {/* Buy Now & Delete Button Container */}
