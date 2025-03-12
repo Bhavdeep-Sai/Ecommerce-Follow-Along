@@ -11,7 +11,7 @@ router.post("/add", authenticate, upload.array("images", 5), async (req, res) =>
             return res.status(401).json({ message: "Unauthorized! User not authenticated." });
         }
 
-        const { name, price, description } = req.body;
+        const { name, price, description, rating } = req.body;
         const userId = req.user._id;
 
         if (!name || !price || !description) {
@@ -20,10 +20,17 @@ router.post("/add", authenticate, upload.array("images", 5), async (req, res) =>
 
         const imagePaths = req.files.map(file => file.filename);
 
-        const product = new Product({ name, price, description, images: imagePaths, userId });
-        await product.save();
+        const product = new Product({
+            name,
+            price,
+            description,
+            rating: rating || 0, // ✅ Set default rating if not provided
+            images: imagePaths,
+            userId
+        });
 
-        res.status(201).json({ message: "Product added successfully!", product });
+        await product.save();
+        res.status(201).json({ message: "✅ Product added successfully!", product });
     } catch (error) {
         console.error("❌ Error adding product:", error);
         res.status(500).json({ message: "Server error", error: error.message });
@@ -56,9 +63,9 @@ router.get("/:id", authenticate, async (req, res) => {
 });
 
 // ➡️ Update Product Route
-router.put("/:id", authenticate, async (req, res) => {
+router.put("/:id", authenticate, upload.array("images", 5), async (req, res) => {
     const { id } = req.params;
-    const { name, price, description } = req.body;
+    const { name, price, description, rating } = req.body;
 
     try {
         const product = await Product.findById(id);
@@ -74,9 +81,16 @@ router.put("/:id", authenticate, async (req, res) => {
         product.name = name || product.name;
         product.price = price || product.price;
         product.description = description || product.description;
+        product.rating = rating !== undefined ? rating : product.rating; // ✅ Update rating
+
+        // ✅ Handle new image upload (if available)
+        if (req.files.length > 0) {
+            product.images = req.files.map(file => file.filename);
+        }
 
         await product.save();
-        res.status(200).json({ message: "Product updated successfully", product });
+
+        res.status(200).json({ message: "✅ Product updated successfully", product });
     } catch (error) {
         console.error("❌ Error updating product:", error);
         res.status(500).json({ message: "Failed to update product" });
@@ -98,7 +112,7 @@ router.delete("/:id", authenticate, async (req, res) => {
         }
 
         await Product.findByIdAndDelete(id);
-        res.status(200).json({ message: "Product deleted successfully" });
+        res.status(200).json({ message: "✅ Product deleted successfully" });
     } catch (error) {
         console.error(`❌ Error deleting product with ID ${id}:`, error);
         res.status(500).json({ message: "Failed to delete product" });

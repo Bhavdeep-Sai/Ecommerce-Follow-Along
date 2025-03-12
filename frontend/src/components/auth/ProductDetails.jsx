@@ -8,13 +8,19 @@ const ProductDetails = () => {
     const [product, setProduct] = useState(null);
     const [otherProducts, setOtherProducts] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [quantity, setQuantity] = useState(1); // ✅ Quantity state
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProductDetails = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:8000/products/${id}`);
+                const token = localStorage.getItem("token");
+                const response = await axios.get(`http://localhost:8000/products/${id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
                 setProduct(response.data);
             } catch (error) {
                 console.error("❌ Error fetching product details:", error);
@@ -42,14 +48,16 @@ const ProductDetails = () => {
     }, [id]);
 
     const handleAddToCart = () => {
-        if (product) {
-            console.log(`✅ Added to cart: ${product.name}`);
+        if (product && quantity > 0) {
+            console.log(`✅ Added to cart: ${quantity} x ${product.name}`);
+            // Optionally send request to add to cart with quantity
         }
     };
 
     const handleBuyNow = () => {
-        if (product) {
-            console.log(`✅ Buying: ${product.name}`);
+        if (product && quantity > 0) {
+            console.log(`✅ Buying ${quantity} x ${product.name}`);
+            // Optionally send request to handle purchase with quantity
         }
     };
 
@@ -61,13 +69,13 @@ const ProductDetails = () => {
 
     return (
         <div className="min-h-screen w-full bg-gray-800 text-white">
-            <Navbar />
+            <Navbar hideButtons={true} />
 
             {/* Product Details Section */}
             <div className="max-w-6xl mx-auto pt-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Product Image */}
-                    <div className="w-full h-[400px] flex justify-center items-center rounded-lg ">
+                    <div className="w-full h-[400px] flex justify-center items-center rounded-lg">
                         {product.images?.length > 0 ? (
                             <img
                                 src={`http://localhost:8000/uploads/${product.images[0]}`}
@@ -100,21 +108,33 @@ const ProductDetails = () => {
                             <p className="text-gray-300 leading-relaxed mb-6">
                                 {product.description || "No description available."}
                             </p>
+
+                            {/* ✅ Quantity Input */}
+                            <div className="flex items-center bg-gray-600 p-2 pl-3 rounded-[10px] w-50 gap-4 mb-4">
+                                <label className="text-[1.3rem] font-semibold ">Quantity:</label>
+                                <input
+                                    type="number"
+                                    value={quantity}
+                                    onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                                    className="w-20 bg-gray-700 text-white border border-gray-600 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+                                    min="1"
+                                />
+                            </div>
                         </div>
 
                         {/* Action Buttons */}
                         <div className="flex gap-4 mt-6">
                             <button
                                 onClick={handleAddToCart}
-                                className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-md transition-all focus:outline-none shadow-lg"
+                                className="flex-1 bg-blue-500 cursor-pointer hover:bg-blue-600 text-white text-2xl py-3 rounded-md transition-all focus:outline-none shadow-lg"
                             >
-                                🛒 Add to Cart
+                                Add to Cart
                             </button>
                             <button
                                 onClick={handleBuyNow}
-                                className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 rounded-md transition-all focus:outline-none shadow-lg"
+                                className="flex-1 bg-green-500 cursor-pointer hover:bg-green-600 text-white text-2xl py-3 rounded-md transition-all focus:outline-none shadow-lg"
                             >
-                                💳 Buy Now
+                                Buy Now
                             </button>
                         </div>
                     </div>
