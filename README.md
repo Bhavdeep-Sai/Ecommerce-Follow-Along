@@ -192,3 +192,7 @@ This milestone involves creating a Page where it contains more detailed informat
 - Links to Buy, Cart pages.
 - Responsive design for all screen sizes.
 - Shows similar products at bottom of Page.
+
+## 🛒 **Milestone 17: Cart Functionality in Node.js + MongoDB**
+
+This project adds **cart functionality** to an existing **Node.js + MongoDB** application. The functionality includes creating a cart, adding products to the cart, retrieving cart details, and removing products from the cart.
