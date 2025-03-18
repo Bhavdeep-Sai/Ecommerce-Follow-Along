@@ -62,20 +62,13 @@ function Navbar({ hideButtons = false }) {
               Add Product
             </button>
           )}
+          
 
           {user ? (
             <>
               <span className="text-2xl font-semibold">
                 Welcome, <span className="font-semibold text-yellow-300">{capitalize(user.name)}</span>
               </span>
-
-              <button
-                onClick={handleLogout}
-                className="bg-red-600 px-4 py-2 rounded-lg hover:bg-red-700 transition"
-              >
-                Logout
-              </button>
-
               {/* Cart Button AFTER Logout */}
               {!hideButtons && (
                 <button onClick={() => navigate('/cart')}>
@@ -83,11 +76,20 @@ function Navbar({ hideButtons = false }) {
                     width="40"
                     height="40"
                     className="invert cursor-pointer"
-                    src="https://img.icons8.com/material-rounded/48/shopping-basket-add.png"
+                    src="https://img.icons8.com/fluency-systems-regular/48/fast-cart.png"
                     alt="shopping-basket-add"
                   />
                 </button>
+                
               )}
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 px-4 py-2 rounded-lg hover:bg-red-700 transition"
+              >
+                Logout
+              </button>
+
+
             </>
           ) : (
             <>
