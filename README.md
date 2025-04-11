@@ -362,3 +362,23 @@ In this milestone, we created a **frontend page** to display all the user orders
 
 4. **Navbar Update**:
    - Added a link to the `my-orders` page in the navbar for better accessibility.
+
+
+# Milestone 28: Cancel Orders Feature
+
+## Overview
+- Cancel placed orders through the "My Orders" page.
+
+### Frontend
+1. **Add a Cancel Order Button:**
+   - In the "My Orders" page, add a **Cancel Order** button for every order listed.
+   - Ensure the cancel button is **not displayed** if the order is already canceled.
+
+### Backend
+1. **Create a New Endpoint:**
+   - Create an endpoint to handle the cancelation of orders.
+   - The endpoint will:
+     - Accept the `order-id` as input.
+     - Fetch the order based on the provided ID.
+     - Update the order's status to `canceled`.
+     - Save the updated order.
