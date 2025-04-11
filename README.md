@@ -382,3 +382,33 @@ In this milestone, we created a **frontend page** to display all the user orders
      - Fetch the order based on the provided ID.
      - Update the order's status to `canceled`.
      - Save the updated order.
+
+# Milestone 29: Integrate Online Payments with PayPal API
+
+## Overview
+- Learn how to use the PayPal API.
+- Understand how to integrate online payment gateways into your application.
+
+---
+
+## 📝 Steps for Implementation
+
+### 1. Set Up PayPal Sandbox Account
+- Create a PayPal account using the [PayPal Developer Dashboard](https://developer.paypal.com/).
+- Log in and navigate to **Sandbox Accounts**.
+- Copy the **UserID** of the sandbox account and save it for later use.
+- Locate the **Client ID** in the sandbox account and save it securely.
+
+---
+
+### 2. Update the Order Confirmation Page
+- In your application’s **Order Confirmation Page**, include two payment options:
+  1. **Cash on Delivery (COD)**
+  2. **Online Payment**
+- Add **radio buttons** for users to select between these payment methods.
+
+---
+
+### 3. Display PayPal Buttons
+- When the **Online Payment** option is selected, dynamically display the PayPal buttons.
+- The PayPal buttons will be integrated in the next milestone.
