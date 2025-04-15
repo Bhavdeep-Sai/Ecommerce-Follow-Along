@@ -412,3 +412,14 @@ In this milestone, we created a **frontend page** to display all the user orders
 ### 3. Display PayPal Buttons
 - When the **Online Payment** option is selected, dynamically display the PayPal buttons.
 - The PayPal buttons will be integrated in the next milestone.
+
+
+# Milestone 30: Online Payment Integration with PayPal API
+
+## Overview
+This repository contains the implementation of the online payment gateway using the PayPal API as part of Milestone 30 in the Full Stack Web Development course. The goal was to understand and integrate online payments into a web application using ReactJS.
+
+## Features
+- PayPal API integration for online payments.
+- Implementation of secure payment methods such as credit and debit cards.
+- Usage of the `react-paypal-js` package for seamless PayPal integration.
