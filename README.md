@@ -391,7 +391,7 @@ In this milestone, we created a **frontend page** to display all the user orders
 
 ---
 
-## 📝 Steps for Implementation
+## Steps for Implementation
 
 ### 1. Set Up PayPal Sandbox Account
 - Create a PayPal account using the [PayPal Developer Dashboard](https://developer.paypal.com/).
@@ -426,22 +426,22 @@ This repository contains the implementation of the online payment gateway using 
 
 # Milestone 32: Adding Mail to Global State with Redux
 
-## Project Overview 🌟
+## Project Overview 
 This milestone focuses on using **Redux** to manage the global state in our application. Specifically, we've stored the user's email in the global state and made it accessible across all pages.
 
-## Learning Goals 🎯
+## Learning Goals 
 By completing this milestone, we aimed to:
 - Understand and implement **global state management** with Redux.
 - Dispatch and store the user's email from the **Login page**.
 - Access the stored email in all other pages using **useSelector**.
 
-## Key Features ✅
+## Key Features 
 1. **Login Page Functionality**:
    - Integrated **Redux Dispatch** to store the user's email in the global state.
 2. **Global State Access**:
    - Implemented **useSelector** across remaining pages to access the stored email.
 
-## Code Highlights 📝
+## Code Highlights 
 ### Redux Store
 We set up a global Redux store to manage state.
 
@@ -450,3 +450,22 @@ We set up a global Redux store to manage state.
 
 ### useSelector in Other Pages
 - Accessed the stored email from the global state in the rest of the pages.
+
+# Milestone 33: Creating JWT Tokens and Storing in Cookies
+
+## Project Overview 
+In this milestone, we learned how to create a **JWT token** and store it in a **browser cookie** for secure and persistent session management.
+
+## Learning Goals 
+- Understand how to create a **JWT token**.
+- Learn how to store tokens securely inside **cookies**.
+
+## Key Features 
+### Steps Implemented:
+1. **JWT Token Creation**:
+   - Installed the `jsonwebtoken` package using NPM.
+   - Used the `sign` method to create a JWT token containing user email and ID.
+   - Defined an expiration time for the token by setting `maxAge`.
+   
+2. **Storing Cookies**:
+   - Added the cookie with the JWT token into the **response** object, enabling storage in the browser.
