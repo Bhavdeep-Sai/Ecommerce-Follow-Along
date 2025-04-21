@@ -423,3 +423,30 @@ This repository contains the implementation of the online payment gateway using 
 - PayPal API integration for online payments.
 - Implementation of secure payment methods such as credit and debit cards.
 - Usage of the `react-paypal-js` package for seamless PayPal integration.
+
+# Milestone 32: Adding Mail to Global State with Redux
+
+## Project Overview 🌟
+This milestone focuses on using **Redux** to manage the global state in our application. Specifically, we've stored the user's email in the global state and made it accessible across all pages.
+
+## Learning Goals 🎯
+By completing this milestone, we aimed to:
+- Understand and implement **global state management** with Redux.
+- Dispatch and store the user's email from the **Login page**.
+- Access the stored email in all other pages using **useSelector**.
+
+## Key Features ✅
+1. **Login Page Functionality**:
+   - Integrated **Redux Dispatch** to store the user's email in the global state.
+2. **Global State Access**:
+   - Implemented **useSelector** across remaining pages to access the stored email.
+
+## Code Highlights 📝
+### Redux Store
+We set up a global Redux store to manage state.
+
+### Dispatch in Login Page
+- Captured the user's email and stored it in the global state using `dispatch`.
+
+### useSelector in Other Pages
+- Accessed the stored email from the global state in the rest of the pages.
