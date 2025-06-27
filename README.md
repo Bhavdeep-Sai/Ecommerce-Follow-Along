@@ -441,24 +441,6 @@ By completing this milestone, we aimed to:
 2. **Global State Access**:
    - Implemented **useSelector** across remaining pages to access the stored email.
 
-## Code Highlights 
-### Redux Store
-We set up a global Redux store to manage state.
-
-### Dispatch in Login Page
-- Captured the user's email and stored it in the global state using `dispatch`.
-
-### useSelector in Other Pages
-- Accessed the stored email from the global state in the rest of the pages.
-
-# Milestone 33: Creating JWT Tokens and Storing in Cookies
-
-## Project Overview 
-In this milestone, we learned how to create a **JWT token** and store it in a **browser cookie** for secure and persistent session management.
-
-## Learning Goals 
-- Understand how to create a **JWT token**.
-- Learn how to store tokens securely inside **cookies**.
 
 ## Key Features 
 ### Steps Implemented:
